@@ -22,6 +22,7 @@ app.get('/appointments', AppointmentCtrl.all);
 app.post('/appointments', appointmentValidation.create, AppointmentCtrl.create);
 app.delete('/appointments/:id', AppointmentCtrl.remove);
 app.patch('/appointments/:id', appointmentValidation.update, AppointmentCtrl.update);
+app.get('/appointments/:id', AppointmentCtrl.show);
 
 app.listen(6666, function(err) {
   if (err) {

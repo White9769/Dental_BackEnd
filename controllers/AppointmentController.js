@@ -136,6 +136,24 @@ const remove = async function(req, res) {
   });
 };
 
+const show = async function(req, res) {
+  const id = req.params.id;
+  try {
+    const appointment = await Appointment.findById(id)
+        .exec();
+
+    res.json({
+      status: 'success',
+      data: { ...appointment._doc}
+    });
+  } catch (e) {
+    return res.status(404).json({
+      success: false,
+      message: 'PATIENT_NOT_FOUND'
+    });
+  }
+};
+
 const all = function(req, res) {
   Appointment.find({})
     .populate('patient')
@@ -176,6 +194,7 @@ AppointmentController.prototype = {
   create,
   remove,
   update,
+  show,
 };
 
 module.exports = AppointmentController;
