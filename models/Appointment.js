@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 
 const AppointmentSchema = new Schema(
   {
-    dentNumber: Number,
-    price: Number,
+    dentNumber: String,
+    price: String,
     diagnosis: String,
     date: String,
     time: String,
